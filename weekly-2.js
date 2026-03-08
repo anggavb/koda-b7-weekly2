@@ -35,3 +35,41 @@ const processNumbers = (arr) => {
 console.log('\n----- Soal Nomor 3 -----');
 console.log(processNumbers([1,2,3,4,5]));
 console.log(processNumbers([2,4,6,8]));
+
+// --------- Soal 4 ---------
+// Fungsi fetchData mengembalikan Promise
+// Jika status true -> resolve setelah 3 detik
+// Jika status false -> langsung reject
+const fetchData = (status) => {
+  return new Promise((resolve, reject) => {
+    if (status) {
+      setTimeout(() => {
+        resolve("Data berhasil diambil");
+      }, 3000);
+    } else {
+      reject("Gagal mengambil data");
+    }
+  });
+};
+
+// 1. Menggunakan then-catch
+fetchData(true)
+  .then((result) => { // then() digunakan untuk menangani Promise yang resolve (berhasil)
+    console.log('\n----- Soal Nomor 4 -----');
+    console.log("SUKSES:", result, '(then-catch)');
+  })
+  .catch((error) => { // catch() digunakan untuk menangani Promise yang reject (gagal)
+    console.log("ERROR:", error, '(then-catch)');
+  });
+
+// 2. Menggunakan async-await
+const getData = async () => { // async membuat fungsi selalu mengembalikan Promise
+  try { // try-catch digunakan untuk menangani proses (pada try) dan error (pada catch) dari await, cara ini umum digunakan dan bukan fitur bawaan dari async-await
+    const result = await fetchData(true); // await menghentikan eksekusi sementara sampai Promise selesai (resolve/reject)
+    console.log("SUKSES:", result, '(async-await)');
+  } catch (error) {
+    console.log("ERROR:", error, '(async-await)');
+  }
+};
+
+getData();
