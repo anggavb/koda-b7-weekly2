@@ -13,3 +13,13 @@ const triangle = (num) => {
 console.log('----- Soal Nomor 1 -----');
 console.log(triangle(5))
 
+// --------- Soal 2 ---------
+const buatRentang = (start, end) => {
+  if (!Number.isInteger(start) || !Number.isInteger(end) || start > end) return "Parameter harus berurutan dan bertipe nomor"
+
+  let length = end - start + 1
+  return [...Array(length)].map((_, i) => start + i).join(', ')
+}
+
+console.log('\n----- Soal Nomor 2 -----');
+console.log(buatRentang(5,10));
