@@ -73,3 +73,35 @@ const getData = async () => { // async membuat fungsi selalu mengembalikan Promi
 };
 
 getData();
+
+// --------- Soal 5 ---------
+const getDataFromServer = (status, callback) => {
+  if (status) {
+    setTimeout(() => {
+      const products = [
+        'Product 1',
+        'Product 2',
+        'Product 3'
+      ]
+      callback(products, null)
+    }, 3000)
+  } else {
+    const err = new Error('Failed to fetch data')
+    callback(null, err)
+  }
+}
+
+// callback function
+const processData = (data, err) => {
+  try {
+    if (err) throw err
+
+    console.log('\n----- Soal Nomor 5 -----');
+    console.log("Data received:", data)
+  } catch (error) {
+    console.log('\n----- Soal Nomor 5 -----');
+    console.error("Error:", error.message)
+  }
+}
+
+getDataFromServer(true, processData)
