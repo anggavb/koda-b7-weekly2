@@ -23,3 +23,15 @@ const buatRentang = (start, end) => {
 
 console.log('\n----- Soal Nomor 2 -----');
 console.log(buatRentang(5,10));
+
+// --------- Soal 3 ---------
+const processNumbers = (arr) => {
+  if (!Array.isArray(arr) || !arr.every(Number.isInteger)) return "Parameter harus bertipe array dan berisi angka"
+
+  const checkNumbers = arr.filter(n => n % 2 !== 0)
+  return checkNumbers.reduce((acc, current) => acc * current, 1)
+}
+
+console.log('\n----- Soal Nomor 3 -----');
+console.log(processNumbers([1,2,3,4,5]));
+console.log(processNumbers([2,4,6,8]));
